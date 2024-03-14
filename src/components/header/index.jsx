@@ -57,46 +57,46 @@ const Navbar = () => {
             onClick={() => setToggleMenu(false)}
           />
           <ul className="list-none w-full px-4">
-          <Link to="/" className="text-black ml-6 text-[1.35rem] md:text-2xl">
-        Encode<span className='text-[#192946]'>Plug</span>
+          <Link to="/" className="text-black ml-6 text-[1.35rem] md:text-2xl font-medium">
+        Encode<span className='text-[#283c55] font-semibold'>Plug</span>
       </Link>
-            <hr className="z-20- h-6 my-8 text-yellow w-[70%] mx-auto" />
+            <hr className="z-20- h-6 my-8 text-[#395d88] w-[70%] mx-auto" />
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
                 <Link to="/" className="hover:text-lightBlue font-semibold">
                   Account
                 </Link>
-                <BsPersonFill color="#000" size={20} />
+                <BsPersonFill color="#000" size={23} />
               </div>
             </li>
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
                 <Link
-                  to="/business"
+                  to="/"
                   className="hover:text-lightBlue font-semibold"
                 >
                   Help
                 </Link>
-                <IoHelpCircleOutline color="#000" size={20} />
+                <IoHelpCircleOutline color="#000" size={23} />
               </div>
             </li>
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
-                <Link to="#" className="hover:text-lightBlue font-semibold">
+                <Link to="/" className="hover:text-lightBlue font-semibold">
                   Cart
                 </Link>
-                <LuShoppingCart color="#000" size={20} />
+                <LuShoppingCart color="#000" size={23} />
               </div>
             </li>
           </ul>
           <div className="flex items-center space-x-10 absolute bottom-0 my-6">
-            <Link to="/signup">
+            <Link to="/">
               <Button
                 className="hover:bg-lightBlue hover:scale-95 font-extrabold duration-300 center"
                 children="Sign Up"
               />
             </Link>
-            <Link to="/login">Join EncodePlug today!</Link>
+            <Link to="/">Join EncodePlug today!</Link>
           </div>
         </div>
       )}

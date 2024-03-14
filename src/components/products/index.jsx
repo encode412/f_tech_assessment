@@ -25,7 +25,7 @@ const Products = () => {
       .catch((error) => {
         console.error('Error:', error);
         setError(error);
-        setLoading(false);
+        setLoading(!false);
       });
   }, []);
 
