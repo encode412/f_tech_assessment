@@ -1,4 +1,3 @@
-// src/components/Input.jsx
 import { useState } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 

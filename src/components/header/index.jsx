@@ -1,29 +1,24 @@
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { LuX, LuMoveRight, LuShoppingCart } from 'react-icons/lu';
+import { LuX, LuShoppingCart } from 'react-icons/lu';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoHelpCircleOutline } from 'react-icons/io5';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../button';
-import Input from '../input';
 
 const Navbar = () => {
-  
   const [toggleMenu, setToggleMenu] = useState();
-  const location = useLocation();
-  
 
   return (
     <div className="flex items-center justify-center h-12 md:h-24 bg-[#3767ce] text-primary">
       <Link to="/" className="text-white text-xl md:text-2xl">
-        Encode<span className='text-[#192946]'>Plug</span>
+        Encode<span className="text-[#192946]">Plug</span>
       </Link>
       <div className="px-6 xl:px-4 flex items-center justify-center space-x-8 ">
         <div className="w-40">{/* <Logo /> */}</div>
         <div className="md:space-x-6 hidden xl:flex items-center w-5/6">
-          <div className="flex items-center gap-4 w-[40rem]">
-          </div>
+          <div className="flex items-center gap-4 w-[40rem]"></div>
         </div>
       </div>
 
@@ -57,9 +52,12 @@ const Navbar = () => {
             onClick={() => setToggleMenu(false)}
           />
           <ul className="list-none w-full px-4">
-          <Link to="/" className="text-black ml-6 text-[1.35rem] md:text-2xl font-medium">
-        Encode<span className='text-[#283c55] font-semibold'>Plug</span>
-      </Link>
+            <Link
+              to="/"
+              className="text-black ml-6 text-[1.35rem] md:text-2xl font-medium"
+            >
+              Encode<span className="text-[#283c55] font-semibold">Plug</span>
+            </Link>
             <hr className="z-20- h-6 my-8 text-[#395d88] w-[70%] mx-auto" />
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
@@ -71,10 +69,7 @@ const Navbar = () => {
             </li>
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
-                <Link
-                  to="/"
-                  className="hover:text-lightBlue font-semibold"
-                >
+                <Link to="/" className="hover:text-lightBlue font-semibold">
                   Help
                 </Link>
                 <IoHelpCircleOutline color="#000" size={23} />

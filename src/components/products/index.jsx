@@ -4,30 +4,22 @@ import Loader from '../loader';
 import ErrorScreen from '../error_screen';
 import Pagination from '../pagination';
 import Input from '../input';
-import Button from '../button';
+import { useGetProducts } from '../../hooks/useGetProducts';
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const { products, loading, error } = useGetProducts();
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        setFilteredProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        setError(error);
-        setLoading(!false);
-      });
-  }, []);
+    // check if the products are not empty, if so then the
+    // API call was successful and we can update our
+    // filteredProducts state
+    if (Object.keys(products).length > 0) {
+      setFilteredProducts(products);
+    }
+  }, [products]);
 
   if (loading) {
     return <Loader />;
@@ -37,8 +29,8 @@ const Products = () => {
   }
 
   const filterItems = (searchTerm) => {
-    const filteredProducts = products.filter((user) =>
-      user.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredProducts = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredProducts(filteredProducts);
@@ -51,7 +43,6 @@ const Products = () => {
     indexOfLastProduct
   );
   const nPages = Math.ceil(products.length / productsPerPage);
-  console.log(products);
 
   return (
     <div className="w-5/6 mx-auto py-10">
@@ -61,11 +52,13 @@ const Products = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         {currentProducts.length === 0 && (
           <div className="flex items-center justify-center xl:w-[500%] h-[50vh]">
-            <div className="md:text-4xl text-xl text-[#aa3535]">Not available</div>
+            <div className="md:text-4xl text-xl text-[#aa3535]">
+              Not available
+            </div>
           </div>
         )}
         {currentProducts?.map((products) => (
-          <ProductsCard products={products} id={products.id} />
+          <ProductsCard products={products} key={products.id} data-testid='product-list product'  />
         ))}
       </div>
       <Pagination
